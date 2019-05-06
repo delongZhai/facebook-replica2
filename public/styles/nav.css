@@ -193,6 +193,11 @@ form button{
     top: 0;
 }
 
+.dropdown-menu.profile-menu.show{
+    top: 100%;
+    left: 45%;
+}
+
 div.profile-menu{
     font-size: 0.8rem;
     border-radius: 0;
@@ -414,6 +419,34 @@ input[type="search"]::placeholder{
         background-color: transparent;
         background-clip: none;
         border: none;
+    }
+
+    div.profile-menu{
+        background-color: transparent;
+        border: none;
+    }
+
+    .navbar-nav {
+        padding-left: 0;
+    }
+
+    .dropdown-divider{
+        display: none;
+    }
+
+    .navbar-nav .nav-item a{
+        float: none;
+        text-align: center;
+    }
+
+    a.dropdown-item, button.dropdown-item{
+        color: white;
+    }
+
+    .btn.btn-outline-primary.btn-sm{
+        width: 225px;
+        margin: auto;
+        display: block;
     }
 }
 

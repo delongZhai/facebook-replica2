@@ -29,4 +29,15 @@ $(document).ready(function(){
         $("#post-value").val("");
     });
 
+    $('#background-image-file').change(function () {
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            $('.background-image').css('background-image', 'url("' + reader.result + '")');
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+        }
+    });
 });
