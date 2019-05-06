@@ -375,6 +375,12 @@ input[type="search"]::placeholder{
     margin: auto;
 }
 
+.btn.btn-outline-primary.btn-sm {
+    width: 225px;
+    margin: auto;
+    display: block;
+}
+
 
 @media (max-width: 992px){
     li.nav-item.active, li.nav-item.dropbdown{
@@ -441,12 +447,6 @@ input[type="search"]::placeholder{
 
     a.dropdown-item, button.dropdown-item{
         color: white;
-    }
-
-    .btn.btn-outline-primary.btn-sm{
-        width: 225px;
-        margin: auto;
-        display: block;
     }
 }
 
