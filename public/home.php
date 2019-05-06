@@ -27,8 +27,8 @@
             <div class="navbar-collapse collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="form-inline my-2 my-lg-0" method="GET" action="search.php">
+                            <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
                             <button><i class="fas fa-search"></i></button>
                             <label for="submit"></label>
                         </form>
@@ -41,7 +41,7 @@
                         <div class="dropdown-menu profile-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                            <button class="dropdown-item" href="#">Logout</button>
                         </div>
                     </li>
                 </ul>
@@ -56,9 +56,7 @@
                 <div>
                     <div class="background-image"></div>
                     <img src="#" alt="">
-                    <?php
-                      echo "<h2> Welcome " .$row['first_name']. " " .$row['last_name']. " to your Facebook home page. </h2>";
-                    ?>
+                    
                     <div class="dropdown">
                         <div class="btn btn-outline-primary btn-sm">
                             <input type="file" id="background-image-file" class="inputfile" accept='image/*'>
@@ -72,6 +70,10 @@
         <div class="w-100"></div>
         <div class="col-lg-5 col-sm-12">
             <div class="box intro">
+                <?php
+                    echo "<h2> Welcome " .$row['first_name']. " " .$row['last_name']. " to your Facebook home page. </h2>";
+                    echo "<h3> Birthday: ".$row['birthday']. " Gender: " .$row['gender']. " </h3>"; 
+                ?>
                 <div class="title" >
                     <i class="fas fa-globe-americas"></i>
                     <h3>Intro</h3>
@@ -80,7 +82,7 @@
                     <div class="bio-intro">
                         <i class="far fa-address-card"></i>
                         <p>Change Bio</p>
-                        <a href="#" class="adding-bio">Add Bio</a>
+                        <a class="adding-bio">Add Bio</a>
                     </div>
                     <div id="bio">
                         <form action="userInfo.php" method="post">
@@ -157,6 +159,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" value="SAVE" class="btn-primary">
                     </div>
                 </div>
             </div>
