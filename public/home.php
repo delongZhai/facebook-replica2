@@ -153,13 +153,12 @@
                         <div class="hometown">
                             <h6><i class="fas fa-search-location"></i>Hometown</h6>
                                 <input class="modal-input" type="text" id="hometown" name="Hometown" placeholder="Hometown">
-                                <input type="submit" class="btn-outline-primary">
                             </form>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" value="SAVE" class="btn-primary">
+                        <input type="submit" value="SAVE" class=" btn btn-primary">
                     </div>
                 </div>
             </div>
