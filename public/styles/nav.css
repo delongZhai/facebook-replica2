@@ -98,7 +98,6 @@ textarea:focus{
     width: 100%;
     height: 90px;
     outline: none;
-    size: 
 }
 
 .title{
@@ -272,7 +271,7 @@ input[type="search"]::placeholder{
     text-align: center;
 }
 
-.box.intro, .box.friends, .box.post{
+.box.intro, .box.friends, .box.post, .box.self{
     background: white;
     border-radius: 3px;
     margin-bottom: 15px;
@@ -381,7 +380,6 @@ input[type="search"]::placeholder{
     display: block;
 }
 
-
 @media (max-width: 992px){
     li.nav-item.active, li.nav-item.dropbdown{
         position: relative;
@@ -392,6 +390,7 @@ input[type="search"]::placeholder{
         top: 70%;
     }
 }
+
 
 @media (min-width: 500px) and (max-width: 768px) {
     .navbar-dark .navbar-toggler, .navbar-brand{

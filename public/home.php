@@ -19,7 +19,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark justify-content-between">
         <div class="container">
-            <a class="navbar-brand" href="home.php"><i class="fab fa-facebook-square"></i>Facebook</a>
+            <a class="navbar-brand" href="#" ><i class="fab fa-facebook-square"></i>Facebook</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <!-- <i class="fas fa-bars"></i> -->
                 <span class="navbar-toggler-icon"></span>
@@ -27,21 +27,21 @@
             <div class="navbar-collapse collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <form class="form-inline my-2 my-lg-0" method="GET" action="search.php">
+                        <form class="form-inline my-2 my-lg-0" method="POST" action="search.php">
                             <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
                             <button><i class="fas fa-search"></i></button>
                             <label for="submit"></label>
                         </form>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="javascript:window.location.reload(true)">Home</a>
                     </li>
                     <li class="nav-item dropbdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                         <div class="dropdown-menu profile-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Setting</a>
+                        <a class="dropdown-item" href="settings.php" target="_blank">Setting</a>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" href="#">Logout</button>
+                            <a class="dropdown-item" href="index.php" >Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -69,11 +69,13 @@
         </div>
         <div class="w-100"></div>
         <div class="col-lg-5 col-sm-12">
-            <div class="box intro">
+            <div class="box self">
                 <?php
-                    echo "<h2> Welcome " .$row['first_name']. " " .$row['last_name']. " to your Facebook home page. </h2>";
-                    echo "<h3> Birthday: ".$row['birthday']. " Gender: " .$row['gender']. " </h3>"; 
+                    echo "<h5> Welcome, " .$row['first_name']. " " .$row['last_name']. " to your home page. </h5>";
+                    echo "<h5> Birthday: ".$row['birthday']. "    Gender: " .$row['gender']. " </h5>"; 
                 ?>
+            </div>
+            <div class="box intro">
                 <div class="title" >
                     <i class="fas fa-globe-americas"></i>
                     <h3>Intro</h3>
@@ -158,7 +160,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" value="SAVE" class=" btn btn-primary">
                     </div>
                 </div>
             </div>

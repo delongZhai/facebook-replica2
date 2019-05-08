@@ -23,7 +23,7 @@ $(document).ready(function(){
         var strDateTime = "Date: "+ now.getFullYear() + " \/ " + Number(now.getMonth() + 1)  + " \/ " + Number(now.getDate() + 1) + "<br> Time: " + Number(now.getHours() + 1) + " : " + Number(now.getMinutes() + 1) ;    
         $(".event").prepend(`<div class="post"><div class="thing">
         <h3> 
-            You Username
+            User
         </h3>
         <h6>${strDateTime}</h6><p>${postVal}</p></div></div>`);
         $("#post-value").val("");

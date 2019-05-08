@@ -27,13 +27,13 @@
     <!-- Form for signing in -->
 		<form action="signin.php" method="POST" target="_blank">
 		<div class="login"> 
-			<span class="emailLogin">Email</span> 
+			<span class="emailLogin"> Email</span> 
 			<input type="email" name="user" >
 			<span class="passwordLogin">Password </span>
 			<input type="password" name="pass" >
 			<button type="submit">Log In</button>
 		</div>
-	</form>
+		</form>
 
 	<div class="div3">Connect with friends and the</div>
 	<div class="div3">world around you on Facebook. </div>

@@ -11,14 +11,13 @@
 
         $run = mysqli_query($dbc, $sql);
         if(mysqli_num_rows($run)==1){
-            $info= "SELECT first_name,last_name FROM users WHERE email='".$uname."'";
+            $info= "SELECT first_name,last_name,birthday,gender FROM users WHERE email='".$uname."'";
             $inforun = mysqli_query($dbc, $info);
             $num = mysqli_num_rows($inforun);
 
             while ($row = mysqli_fetch_array($inforun, MYSQLI_ASSOC)){ 
                 require_once ('home.php');
             }
-            
         }
         else{
             echo "Incorrect username or password. Try again";
