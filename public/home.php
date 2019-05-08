@@ -71,12 +71,16 @@
         <div class="col-lg-5 col-sm-12">
             <div class="box self">
                 <?php
+                    $_SESSION['user_id'][0];
                     echo "<h5> Welcome, " .$row['first_name']. " " .$row['last_name']. " to your home page. </h5>";
                     echo "<h5> Birthday: ".$row['birthday']. "    Gender: " .$row['gender']. " </h5>"; 
                 ?>
             </div>
             <div class="box intro">
                 <div class="title" >
+                    <?php 
+                        $query_info = "SELECT user_id FROM users WHERE email='".$uname."'"
+                    ?>
                     <i class="fas fa-globe-americas"></i>
                     <h3>Intro</h3>
                 </div>
@@ -140,23 +144,24 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="education">
-                            <h6><i class="fas fa-university"></i>Education</h6>
-                            <form name="intro" action="intro.php" target="_blank" method="POST">
-                                <input class="modal-input" type="text" id="institution" name="Institution" placeholder="Institution">
-                                <input class="modal-input" type="text" id="degree" name="Degree" placeholder="Degree">
-    
-                        </div>
-                        <div class="currentCity">
-                            <h6><i class="fas fa-city"></i>Current City</h6>
-                                <input class="modal-input" type="text" id="inhabit" name="City" placeholder="Current City">
-                            
-                        </div>
-                        <div class="hometown">
-                            <h6><i class="fas fa-search-location"></i>Hometown</h6>
-                                <input class="modal-input" type="text" id="hometown" name="Hometown" placeholder="Hometown">
-                            </form>
-                        </div>
+                        <form name="intro" action="intro.php" target="_blank" method="POST">
+                            <div class="education">
+                                <h6><i class="fas fa-university"></i>Education</h6>
+                                    <input class="modal-input" type="text" id="institution" name="Institution" placeholder="Institution">
+                                    <input class="modal-input" type="text" id="degree" name="Degree" placeholder="Degree">
+        
+                            </div>
+                            <div class="currentCity">
+                                <h6><i class="fas fa-city"></i>Current City</h6>
+                                    <input class="modal-input" type="text" id="inhabit" name="City" placeholder="Current City">
+                                
+                            </div>
+                            <div class="hometown">
+                                <h6><i class="fas fa-search-location"></i>Hometown</h6>
+                                    <input class="modal-input" type="text" id="hometown" name="Hometown" placeholder="Hometown">
+                                    <input type="submit" class="btn-outline-primary">
+                            </div>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
