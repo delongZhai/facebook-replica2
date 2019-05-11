@@ -33,12 +33,13 @@
                     }
                 }
                 else{
-                    echo "<h1> Session is not started</h1>";
+                    echo "<h1> Session is not started</h1>".mysqli_num_row;
                 }
             }
         }
         else{
-            echo "Incorrect username or password. Try again";
+            $count = mysqli_num_rows($run);
+            echo "Incorrect username or password. Try again".$count;
             exit();
         }
     }

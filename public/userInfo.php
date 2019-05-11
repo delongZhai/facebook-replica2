@@ -1,9 +1,10 @@
 <?php
+    session_start();
     include('header.php');
     require('mysqli_connect.php');
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
+        $userID =$_SESSION['user_id'][0];
         $errors = array(); //Intialize an array that will store error messages for the user
         
         if(empty($_POST["user_bio"])){
@@ -12,7 +13,7 @@
             $bio = $_POST['user_bio'];
         }
             if(empty($errors)){
-                $query = "INSERT INTO user_info (bio) VALUES('$bio')";
+                $query = "UPDATE users SET bio = '$bio' WHERE user_id='".$userID."'";
                 $run = mysqli_query($dbc, $query);
                 if($run){
                     echo "<h1> Bio data is successfully inserted the database</h1>";

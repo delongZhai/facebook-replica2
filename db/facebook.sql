@@ -29,13 +29,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `users` (
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `email` varchar(60) NOT NULL,
   `password` char(40) NOT NULL,
   `birthday` date NOT NULL,
-  `gender` enum('Male','Female') NOT NULL
+  `gender` enum('Male','Female') NOT NULL,
+  `bio` varchar(100) NULL,
+  `education` varchar(50) NULL,
+  `current_city` varchar(25) NULL,
+  `hometown` varchar(50) NULL,
+  `degree` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,23 +56,23 @@ INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `email`, `password`, 
 -- Table structure for table `user_info`
 --
 
-CREATE TABLE `user_info` (
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
-  `bio` varchar(100) DEFAULT NULL,
-  `education` varchar(50) DEFAULT NULL,
-  `current_city` varchar(25) DEFAULT NULL,
-  `hometown` varchar(50) DEFAULT NULL,
-  `info_id` int(10) NOT NULL,
-  `degree` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- CREATE TABLE `user_info` (
+--   `user_id` int(10) UNSIGNED DEFAULT NULL,
+--   `bio` varchar(100) DEFAULT NULL,
+--   `education` varchar(50) DEFAULT NULL,
+--   `current_city` varchar(25) DEFAULT NULL,
+--   `hometown` varchar(50) DEFAULT NULL,
+--   `info_id` int(10) NOT NULL,
+--   `degree` varchar(50) NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`user_id`, `bio`, `education`, `current_city`, `hometown`, `info_id`, `degree`) VALUES
-(NULL, 'Whats up', NULL, NULL, NULL, 26, ''),
-(NULL, NULL, 'Baruch', 'New York', 'Woodside', 27, 'BBA');
+-- INSERT INTO `user_info` (`user_id`, `bio`, `education`, `current_city`, `hometown`, `info_id`, `degree`) VALUES
+-- (NULL, 'Whats up', NULL, NULL, NULL, 26, ''),
+-- (NULL, NULL, 'Baruch', 'New York', 'Woodside', 27, 'BBA');
 
 --
 -- Indexes for dumped tables
@@ -82,9 +87,9 @@ ALTER TABLE `users`
 --
 -- Indexes for table `user_info`
 --
-ALTER TABLE `user_info`
-  ADD PRIMARY KEY (`info_id`),
-  ADD KEY `user_id` (`user_id`);
+-- ALTER TABLE `user_info`
+--   ADD PRIMARY KEY (`info_id`),
+--   ADD KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -99,8 +104,8 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for table `user_info`
 --
-ALTER TABLE `user_info`
-  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+-- ALTER TABLE `user_info`
+--   MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
@@ -109,10 +114,10 @@ ALTER TABLE `user_info`
 --
 -- Constraints for table `user_info`
 --
-ALTER TABLE `user_info`
-  ADD CONSTRAINT `user_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
-  ADD CONSTRAINT `user_info_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
-COMMIT;
+-- ALTER TABLE `user_info`
+--   ADD CONSTRAINT `user_info_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+--   ADD CONSTRAINT `user_info_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

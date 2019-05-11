@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="styles/nav.css">
 </head>
 <body>
+    <?php 
+    session_start();
+    ?>
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark justify-content-between">
         <div class="container">
@@ -71,24 +74,35 @@
         <div class="col-lg-5 col-sm-12">
             <div class="box self">
                 <?php
-                    $_SESSION['user_id'][0];
+                    $userID = $_SESSION['user_id'][0];
+                    echo $userID;
                     echo "<h5> Welcome, " .$row['first_name']. " " .$row['last_name']. " to your home page. </h5>";
                     echo "<h5> Birthday: ".$row['birthday']. "    Gender: " .$row['gender']. " </h5>"; 
                 ?>
             </div>
             <div class="box intro">
                 <div class="title" >
-                    <?php 
-                        $query_info = "SELECT user_id FROM users WHERE email='".$uname."'"
-                    ?>
                     <i class="fas fa-globe-americas"></i>
                     <h3>Intro</h3>
                 </div>
                 <div class="bio">
                     <div class="bio-intro">
                         <i class="far fa-address-card"></i>
-                        <p>Change Bio</p>
-                        <a class="adding-bio">Add Bio</a>
+                        <?php
+                            // require("mysqli_connect.php");
+                            $query = "SELECT bio FROM users WHERE user_id='$userID'";
+                            $run = mysqli_query($dbc, $query);
+                            if(mysqli_num_rows($run)==1){
+                                while($row = mysqli_fetch_array($run, MYSQLI_ASSOC)){
+                                    echo "<p>".$row["bio"]."</p>";
+                                    echo "<a class='adding-bio'>Change Bio</a>";
+                                }
+                            }
+                            else{
+                                echo "<a class='adding-bio'>Add Bio</a>";
+                            }
+                        
+                        ?>
                     </div>
                     <div id="bio">
                         <form action="userInfo.php" method="post">
