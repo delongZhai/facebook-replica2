@@ -13,7 +13,7 @@
             $bio = $_POST['user_bio'];
         }
             if(empty($errors)){
-                $query = "UPDATE users SET bio = '$bio' WHERE user_id='".$userID."'";
+                $query = "UPDATE users SET bio='$bio' WHERE user_id='$userID'";
                 $run = mysqli_query($dbc, $query);
                 if($run){
                     echo "<h1> Bio data is successfully inserted the database</h1>";

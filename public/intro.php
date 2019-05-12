@@ -1,9 +1,11 @@
 <?php
+    session_start();
     include('header.php');
     require('mysqli_connect.php');
     
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors=array();
+        $userID =$_SESSION['user_id'][0];
 
         if(empty($_POST['Institution'])){
             $errors[]="Please enter the institution you attended.";
@@ -30,7 +32,7 @@
         }
 
         if(empty($errors)){
-            $query = "INSERT INTO user_info (education,degree,current_city,hometown) VALUES('$inst','$degree','$city','$town')";
+            $query = "UPDATE users SET education='$inst', degree='$degree', current_city='$city', hometown='$town' WHERE user_id='$userID'";
     
             $run = mysqli_query($dbc,$query);
     		if($run){

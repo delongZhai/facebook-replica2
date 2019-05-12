@@ -75,7 +75,6 @@
             <div class="box self">
                 <?php
                     $userID = $_SESSION['user_id'][0];
-                    echo $userID;
                     echo "<h5> Welcome, " .$row['first_name']. " " .$row['last_name']. " to your home page. </h5>";
                     echo "<h5> Birthday: ".$row['birthday']. "    Gender: " .$row['gender']. " </h5>"; 
                 ?>
@@ -100,8 +99,7 @@
                             }
                             else{
                                 echo "<a class='adding-bio'>Add Bio</a>";
-                            }
-                        
+                            }                        
                         ?>
                     </div>
                     <div id="bio">
@@ -115,7 +113,24 @@
                 <div class="perInfo">
                     <i class="fas fa-pen"></i>
                     <p>Add Intro</p>
-                    <a href="#" data-toggle="modal" data-target="#exampleModal">Add Education, Current City, and Hometown</a>
+                    <?php
+                            // require("mysqli_connect.php");
+                            $query = "SELECT education, current_city, hometown, degree FROM users WHERE user_id='$userID'";
+                            $run = mysqli_query($dbc, $query);
+                            if(mysqli_num_rows($run)==1){
+                                echo "<div class='personInfo'>";
+                                while($row = mysqli_fetch_array($run, MYSQLI_ASSOC)){
+                                    echo "<p>Studies at <strong>".$row["education"]."</strong> with a degree of <strong>".$row["degree"]."</strong></p>";
+                                    echo "<p>Currently live in <strong>".$row["current_city"]."</strong>. </p>";
+                                    echo "<p>Came from <strong>".$row["hometown"]."</strong></p>";
+                                }
+                                echo "</div>";
+                                echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Change Education, Current City, and Hometown</a>";
+                            }
+                            else{
+                                echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Add Education, Current City, and Hometown</a>";
+                            }                        
+                        ?>
                 </div>
             </div>
             <div class="box friends">
