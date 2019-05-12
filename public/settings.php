@@ -9,7 +9,10 @@
 
 <?php
     require ('mysqli_connect.php');
-    $query= "SELECT user_id,first_name,last_name,email FROM users";
+    session_start();
+    $userID =$_SESSION['user_id'][0];
+
+    $query= "SELECT user_id,first_name,last_name,email FROM users WHERE user_id='$userID'";
     $run = mysqli_query($dbc , $query);
     $num = mysqli_num_rows($run);
     if($num>0){
