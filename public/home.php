@@ -103,7 +103,7 @@
                         ?>
                     </div>
                     <div id="bio">
-                        <form action="userInfo.php" method="post">
+                        <form action="userInfo.php" method="post" target="_blank">
                             <textarea name="user_bio" id="bio-value" cols="300" rows="100"  maxlength="80" placeholder="Write Something Interesting about Yourself"></textarea>
                             <input class="btn-outline-primary" id="okay-bio" type="submit" value="Okay">
                         </form>
@@ -114,23 +114,23 @@
                     <i class="fas fa-pen"></i>
                     <p>Add Intro</p>
                     <?php
-                            // require("mysqli_connect.php");
-                            $query = "SELECT education, current_city, hometown, degree FROM users WHERE user_id='$userID'";
-                            $run = mysqli_query($dbc, $query);
-                            if(mysqli_num_rows($run)==1){
-                                echo "<div class='personInfo'>";
-                                while($row = mysqli_fetch_array($run, MYSQLI_ASSOC)){
-                                    echo "<p>Studies at <strong>".$row["education"]."</strong> with a degree of <strong>".$row["degree"]."</strong></p>";
-                                    echo "<p>Currently live in <strong>".$row["current_city"]."</strong>. </p>";
-                                    echo "<p>Came from <strong>".$row["hometown"]."</strong></p>";
-                                }
-                                echo "</div>";
-                                echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Change Education, Current City, and Hometown</a>";
+                        // require("mysqli_connect.php");
+                        $query = "SELECT education, current_city, hometown, degree FROM users WHERE user_id='$userID'";
+                        $run = mysqli_query($dbc, $query);
+                        if(mysqli_num_rows($run)==1){
+                            echo "<div class='personInfo'>";
+                            while($row = mysqli_fetch_array($run, MYSQLI_ASSOC)){
+                                echo "<p>Studies at <strong>".$row["education"]."</strong> with a degree of <strong>".$row["degree"]."</strong></p>";
+                                echo "<p>Currently live in <strong>".$row["current_city"]."</strong>. </p>";
+                                echo "<p>Came from <strong>".$row["hometown"]."</strong></p>";
                             }
-                            else{
-                                echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Add Education, Current City, and Hometown</a>";
-                            }                        
-                        ?>
+                            echo "</div>";
+                            echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Change Education, Current City, and Hometown</a>";
+                        }
+                        else{
+                            echo "<a href='#' data-toggle='modal' data-target='#exampleModal'>Add Education, Current City, and Hometown</a>";
+                        }                        
+                    ?>
                 </div>
             </div>
             <div class="box friends">
@@ -151,16 +151,37 @@
                         <h3>Create Post</h3>
                     </div>
                     <hr>
-                    <form action="#" id="post-form">
-                        <textarea class="longInput" cols="130" rows="50" id="post-value" placeholder="What's on your mind?"></textarea>
-                        <button type="button" class="btn btn-primary">share</button>
+                    <!-- <textarea class="longInput" form="post-form" cols="130" rows="50" id="post-value" name="postValue" placeholder="What's on your mind?"></textarea> -->
+                    <form action="post.php" method="POST" id="post-form" target="_blank">
+                        <input type="text" class="longInput" cols="130" rows="50" id="post-value" name="post" placeholder="What's on your mind?">
+                        <!-- <textarea class="longInput" form="post-form" cols="130" rows="50" id="post-value" name="postValue" placeholder="What's on your mind?"></textarea> -->
+                        <input type="submit" class="btn btn-primary" value="share">
                     </form>
                 </div>
             </div>
             <h6>
                 Posts
             </h6>
-            <div class="box event"></div>
+            <div class="box event">
+                <?php
+                    // require("mysqli_connect.php");
+                    $query = "SELECT first_name, last_name, content, date_time FROM users INNER JOIN posts ON users.user_id = posts.user_id WHERE posts.user_id='$userID'";
+                    $run = mysqli_query($dbc, $query);
+                    $num=mysqli_num_rows($run);
+                    if($num > 0){ 
+                        while($row = mysqli_fetch_array($run, MYSQLI_ASSOC)){
+                            echo '<div class="post"><div class="thing">';
+                            echo "<h3>".$row["first_name"]." ".$row["last_name"]."</h3>";
+                            echo "<h5>".$row["date_time"]."</h5>";
+                            echo "<p>".$row["content"]."</p>";
+                            echo '</div></div>';
+                        }
+                    }
+                    else{
+                        echo "<h5> You don't have any post yet, try create one!</h5>";
+                    }                        
+                ?>
+            </div>
         </div>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

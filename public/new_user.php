@@ -57,7 +57,6 @@
             }
             echo "Please try again!";
         }
-    
         mysqli_close($dbc);
     }
     include('footer.php');

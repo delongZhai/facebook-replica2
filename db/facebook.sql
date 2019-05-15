@@ -43,6 +43,14 @@ CREATE TABLE `users` (
   `degree` varchar(50) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `posts` (
+  `post_id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `user_id` int(10) UNSIGNED NOT NULL, 
+  `content` varchar(150) NOT NULL,
+  `date_time` datetime NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES users(`user_id`)
+)
+
 --
 -- Dumping data for table `users`
 --

@@ -17,17 +17,17 @@ $(document).ready(function(){
         $(".bio").prepend("<p>"+ user_bio +"</p>");
     });
 
-    $("#post-form button").click(function(){
-        var postVal = $("#post-value").val();
-        var now = new Date();
-        var strDateTime = "Date: "+ now.getFullYear() + " \/ " + Number(now.getMonth() + 1)  + " \/ " + Number(now.getDate() + 1) + "<br> Time: " + Number(now.getHours() + 1) + " : " + Number(now.getMinutes() + 1) ;    
-        $(".event").prepend(`<div class="post"><div class="thing">
-        <h3> 
-            User
-        </h3>
-        <h6>${strDateTime}</h6><p>${postVal}</p></div></div>`);
-        $("#post-value").val("");
-    });
+    // $("#post-form button").click(function(){
+    //     var postVal = $("#post-value").val();
+    //     var now = new Date();
+    //     var strDateTime = "Date: "+ now.getFullYear() + " \/ " + Number(now.getMonth() + 1)  + " \/ " + Number(now.getDate() + 1) + "<br> Time: " + Number(now.getHours() + 1) + " : " + Number(now.getMinutes() + 1) ;    
+    //     $(".event").prepend(`<div class="post"><div class="thing">
+    //     <h3> 
+    //         User
+    //     </h3>
+    //     <h6>${strDateTime}</h6><p>${postVal}</p></div></div>`);
+    //     $("#post-value").val("");
+    // });
 
     $('#background-image-file').change(function () {
         var file = this.files[0];
